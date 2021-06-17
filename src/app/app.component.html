@@ -1,0 +1,15 @@
+<p>
+  Try to expand details section for last row
+</p>
+
+<ag-grid-angular
+  #agGrid
+  class="ag-theme-alpine"
+  style="width: 700px; height: 400px;"
+  [rowData]="rowData"
+  [columnDefs]="columnDefs"
+  [gridOptions]="gridOptions"
+  [getRowNodeId]="getRowNodeId"
+  (gridReady)="onGridReady($event)"
+>
+</ag-grid-angular>
