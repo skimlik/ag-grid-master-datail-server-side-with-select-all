@@ -30,8 +30,10 @@ export class AppComponent implements OnDestroy {
       field: 'id',
       headerName: 'Id',
       checkboxSelection: true,
-      headerCheckboxSelection: true,
-      headerComponentFramework: SelectAllHeaderComponent
+      headerComponentFramework: 'selectAllHeader',
+      headerComponentParams: {
+        colId: 'id',
+      }
     },
     {
       colId: 'name',
@@ -65,6 +67,9 @@ export class AppComponent implements OnDestroy {
     rowSelection: 'multiple',
     masterDetail: true,
     context: { parentComponent: this },
+    frameworkComponents: {
+      selectAllHeader: SelectAllHeaderComponent
+    },
     detailCellRendererParams: {
       detailGridOptions: {
         columnDefs: [{ field: 'name' }, { field: 'year' }]
@@ -73,6 +78,13 @@ export class AppComponent implements OnDestroy {
         params.successCallback(params.data.details);
       }
     },
+  };
+
+  defaultColDef: ColDef = {
+      editable: false,
+      resizable: true,
+      suppressMenu: true,
+      sortable: true,
   };
 
   gridApi: GridApi;
@@ -96,8 +108,6 @@ export class AppComponent implements OnDestroy {
       .subscribe(data => {
         params.api.setServerSideDatasource({
           getRows: (params: IServerSideGetRowsParams) => {
-            console.log(params.request);
-
             params.success({
               rowData: data,
               rowCount: data.length

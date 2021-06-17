@@ -1,0 +1,6 @@
+.column-header-label {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
