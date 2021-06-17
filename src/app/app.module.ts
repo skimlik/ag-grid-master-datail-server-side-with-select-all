@@ -4,9 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { SelectAllHeaderComponent } from './select-all-header.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AgGridModule.withComponents()],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AgGridModule.withComponents([SelectAllHeaderComponent])
+  ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })

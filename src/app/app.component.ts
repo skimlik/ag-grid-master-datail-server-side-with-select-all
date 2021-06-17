@@ -12,12 +12,13 @@ import {
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IEntity } from './entity';
+import { SelectAllHeaderComponent } from './select-all-header.component';
 import { DataService } from './server.service';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
   private _unsubscribe = new Subject<void>();
@@ -30,6 +31,7 @@ export class AppComponent implements OnDestroy {
       headerName: 'Id',
       checkboxSelection: true,
       headerCheckboxSelection: true,
+      headerComponentFramework: SelectAllHeaderComponent
     },
     {
       colId: 'name',
